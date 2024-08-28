@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .Icon_Wrapper{
+    @apply rounded-full w-[50px] h-[50px] grid place-items-center text-[22px];
+  }
+}
