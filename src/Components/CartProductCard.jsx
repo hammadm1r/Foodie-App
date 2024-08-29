@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-
+import { MdDelete } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { removeItem } from "../Store/Slices/CartSlice"
 function CartProductCard({ name, price, img }) {
   const [totalPrice, setTotalPrice] = useState(price);
-
+  const dispatch = useDispatch();
 const setPrice = (e) => {
   const quantity = parseInt(e.target.value, 10); // Convert the input value to an integer
   if (quantity >= 1) {
@@ -10,9 +12,14 @@ const setPrice = (e) => {
     console.log(quantity);
     }
   }
+  const handleDelete = (e) => {
+    e.preventDefault();
+    dispatch(removeItem({name:name}))
+  }
   return (
     <div className="border border-gray-200 p-4">
       <div className="flex items-center space-x-4">
+          <MdDelete  className="text-2xl hover:text-red-600" onClick={handleDelete}/>
         <div className="w-2/12 lg:w-1/12">
           <img src={img} alt={name} className="w-full h-auto object-cover" />
         </div>

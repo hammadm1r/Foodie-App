@@ -27,7 +27,7 @@ function Navbar() {
         <div className="hidden lg:block">
           <div className="flex gap-4 ">
             <div className="Icon_Wrapper border border-grey-200 hover:border-gray-300 cursor-pointer ">
-              <FaUser size={20} />
+            <Link to="/profile"><FaUser size={20} /></Link>
             </div>
             <div className="Icon_Wrapper border border-grey-200 hover:border-gray-300 cursor-pointer">
               <Link to="/cart"><FaCartShopping size={20} /></Link>

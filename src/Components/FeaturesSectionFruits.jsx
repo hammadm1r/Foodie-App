@@ -11,25 +11,25 @@ function FeaturesSectionFruits() {
         {
             id:0,
             name: "Fresh Kiwi",
-            price: "$9",
+            price: 9,
             image: Product__1,
         },
         {
             id:1,
             name: "Dried Mango",
-            price: "$55",
+            price: 55,
             image: Product__2,
         },
         {
             id:2,
             name: "Banana + Cinamon myesli",
-            price: "$35",
+            price: 35,
             image: Product__3,
         },
         {
             id:3,
             name: "Red Dates",
-            price: "$28",
+            price: 28,
             image: Product__4,
         },
     ]
