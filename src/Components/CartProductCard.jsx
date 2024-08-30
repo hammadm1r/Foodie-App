@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../Store/Slices/CartSlice"
+import { removeItem, updateQuantity } from "../Store/Slices/CartSlice"
 function CartProductCard({ name, price, img }) {
   const [totalPrice, setTotalPrice] = useState(price);
   const dispatch = useDispatch();
@@ -9,8 +9,10 @@ const setPrice = (e) => {
   const quantity = parseInt(e.target.value, 10); // Convert the input value to an integer
   if (quantity >= 1) {
     setTotalPrice(price * quantity); // Update the total price based on the quantity
-    console.log(quantity);
+
+    console.log(price);
     }
+    dispatch(updateQuantity({name:name,quantity:quantity}));
   }
   const handleDelete = (e) => {
     e.preventDefault();

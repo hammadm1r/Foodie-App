@@ -12,15 +12,19 @@ function Signup() {
           <div className="text-2xl font-bold justify-center text-primery flex">
               <h3>Sign up</h3> <IoLogIn size={35} />
           </div>
-          <form className="mt-10 text-left">
-              {/* <label for="Email" className='text-xl  text-primery'>Email:</label> */}
-              <input type="email" placeholder='jhondoe@gmail.com' className='px-5 py-3 text-xl rounded-full mt-1 lg:ml-3'/><br/>
-              {/* <label for="Email" className='text-xl  text-primery'>Password:</label> */}
-              <input type="password" placeholder='*******' className='px-5 py-3 text-xl rounded-full mt-4 lg:ml-3 '/>
-              <button className="flex bg-primery hover:bg-secondry px-5 py-3 mt-6 text-xl  text-white rounded-3xl w-full text-center text-bold justify-center">Login</button>
+          <form className="mt-10 ">
+                <div className='text-left grid lg:grid-cols-2  p-6 w-full md:grid-cols-1 sm:grid-cols-1 gap-4'>
+                <input type="text" placeholder='Name' className='px-5 py-3 text-xl rounded-full '/>
+                <input type="text" placeholder='Phone Number' className='px-5 py-3 text-xl rounded-full '/>
+              <input type="text" placeholder='Address' className='px-5 py-3 text-xl rounded-full '/>
+              <input type="email" placeholder='Email' className='px-5 py-3 text-xl rounded-full '/>
+              <input type="password" placeholder='Password' className='px-5 py-3 text-xl rounded-full '/>
+              <input type="password" placeholder='Confirm Password' className='px-5 py-3 text-xl rounded-full '/>
+              </div>
+              <button className="flex bg-primery hover:bg-secondry px-5 py-3 mt-6 text-xl   text-white rounded-3xl w-full text-center text-bold justify-center">Login</button>
           </form>
           
-          <div className="text-sm font-semibold justify-center text-White mt-5">
+          <div className="text-sm font-semibold justify-center text-White mt-5 lg:text-lg">
               <h3>Registered ? <Link to="/login"><span className='text-primery hover:text-secondry'>Log in </span></Link></h3>
           </div>
       </div>
