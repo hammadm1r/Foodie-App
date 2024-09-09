@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { removeItem, updateQuantity } from "../Store/Slices/CartSlice"
-function CartProductCard({ name, price, img }) {
+import { removeFromCart, removeItem, updateQuantity } from "../Store/Slices/CartSlice"
+import { verify } from "../utils/verify";
+function CartProductCard({product_id, name, price, img }) {
   const [totalPrice, setTotalPrice] = useState(price);
   const dispatch = useDispatch();
 const setPrice = (e) => {
@@ -16,7 +17,15 @@ const setPrice = (e) => {
   }
   const handleDelete = (e) => {
     e.preventDefault();
+    if(verify==false){
     dispatch(removeItem({name:name}))
+    }
+    if(verify==true){
+      useEffect(()=>{
+        console.log(product_id);
+        removeFromCart({product_id})
+      })
+    }
   }
   return (
     <div className="border border-gray-200 p-4">

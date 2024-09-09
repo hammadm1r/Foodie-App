@@ -1,38 +1,14 @@
 import React from 'react'
 import feature__2 from "../assets/feature__2.webp"
 import ProductCard from './ProductCard'
-import Product__2 from '../assets/product__2.webp'
-import Product__3 from '../assets/product__3.webp'
-import Product__4 from '../assets/product__4.webp'
-import Product__5 from '../assets/product__5.webp'
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from "../Store/Slices/productSlice";
+import { useEffect } from "react";
 
 function FeatureSectionDairy() {
-    const product = [
-        {
-            id:1,
-            name: "Dried Mango",
-            price: 55,
-            image: Product__2,
-        },
-        {
-            id:2,
-            name: "Banana + Cinamon myesli",
-            price: 35,
-            image: Product__3,
-        },
-        {
-            id:3,
-            name: "Red Dates",
-            price: 28,
-            image: Product__4,
-        },
-        {
-            id:4,
-            name: "Freash Tamato",
-            price: 9,
-            image: Product__5,
-        }
-    ]
+    const dispatch = useDispatch();
+  const product = useSelector((state) => state.productReducer.products);
+ 
   return (
     <div className="container pt-16">
         <div className='lg:flex justify-between items-center'>
@@ -52,7 +28,7 @@ function FeatureSectionDairy() {
             <div>
                 <img src={feature__2} alt="Fruits" className='w-full h-full object-cover' />
             </div>
-                {product.map(el => (<ProductCard key={el.id} name={el.name} price={el.price} img={el.image} />))}
+                {product.map(el => (<ProductCard key={el._id}  product_Id = {el._id} name={el.name} price={el.price} img={el.image} />))}
         </div>
     </div>
   )
