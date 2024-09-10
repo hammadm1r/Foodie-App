@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import feature__1 from "../assets/feature__1.webp"
 import ProductCard from './ProductCard'
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,10 +6,30 @@ import { getProducts } from "../Store/Slices/productSlice";
 import { useEffect } from "react";
 function FeaturesSectionFruits() {
     const dispatch = useDispatch();
-    const product = useSelector((state) => state.productReducer.products);
+    const products = useSelector((state) => state.productReducer.products);
     useEffect(() => {
         dispatch(getProducts());
       }, [dispatch]);
+    const [filteredProducts, setFilteredProducts] = useState(products);
+
+    const [activeCategory, setActiveCategory] = useState('Fruits');
+    useEffect(() => {
+        const defaultCategoryProducts = products.filter((el) => el.category === activeCategory);
+        setFilteredProducts(defaultCategoryProducts);
+    }, [products, activeCategory]);
+    const Category = (cat_Name) =>{
+      console.log(cat_Name);
+      const cat_products = products.filter((el) => el.category == cat_Name);
+      console.log(cat_products);
+      return cat_products.length > 0 ? cat_products : [];
+    }
+  
+    const FilterCategory = (cat_Name) => {
+      const cat_products = Category(cat_Name);
+          setFilteredProducts(cat_products);
+          setActiveCategory(cat_Name);
+    }
+    
   return (
     <div className="container pt-16">
         <div className='lg:flex justify-between items-center'>
@@ -20,16 +40,16 @@ function FeaturesSectionFruits() {
                 </p>
             </div>
             <div className="space-x-4 mt-8 lg:mt-0">
-                <button className="feature_btn">Fruits</button>
-                <button className="text-primery hover:text-secondry" >Vegetables</button>
-                <button className="text-primery hover:text-secondry ">Bread & Bakery </button>
+                <button className={`text-primery hover:text-secondry ${activeCategory === 'Fruits' ? 'text-gray-400' : ''}`}  onClick={() => FilterCategory('Fruits')}>Fruits</button>
+                <button className={`text-primery hover:text-secondry ${activeCategory === 'Vegetables' ? 'text-gray-400' : ''}`}  onClick={() => FilterCategory('Vegetables')} >Vegetables</button>
+                <button className={`text-primery hover:text-secondry ${activeCategory === 'Bread & Bakery' ? 'text-gray-400' : ''}`}  onClick={() => FilterCategory('Bread & Bakery')}>Bread & Bakery </button>
             </div>
         </div>
         <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 pt-8 gap-2'>
             <div>
                 <img src={feature__1} alt="Fruits" className='w-full h-full object-cover' />
             </div>
-                {product.map(el => (<ProductCard key={el._id}  product_Id = {el._id} name={el.name} price={el.price} img={el.image} />))}
+                {filteredProducts.map(el => (<ProductCard key={el._id}  product_Id = {el._id} name={el.name} price={el.price} img={el.image} />))}
         </div>
     </div>
   )
