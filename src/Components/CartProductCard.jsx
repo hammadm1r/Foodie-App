@@ -17,9 +17,7 @@ const setPrice = (e) => {
   }
   const handleDelete = (e) => {
     e.preventDefault();
-    if(verify==false){
     dispatch(removeItem({name:name}))
-    }
     if(verify==true){
       useEffect(()=>{
         console.log(product_id);

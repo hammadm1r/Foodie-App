@@ -53,6 +53,8 @@ function Product() {
         img={CurProduct.image}
         price={CurProduct.price}
         product_Id={CurProduct._id}
+        desc={CurProduct.description}
+        cat={CurProduct.category}
       />
       <div className="mx-auto p-6">
       <h2 className="text-2xl font-bold text-gray-800 mb-4 text-left">Product Quality and Delivery Policies</h2>
