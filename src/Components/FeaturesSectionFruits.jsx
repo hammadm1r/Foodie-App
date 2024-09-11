@@ -18,9 +18,7 @@ function FeaturesSectionFruits() {
         setFilteredProducts(defaultCategoryProducts);
     }, [products, activeCategory]);
     const Category = (cat_Name) =>{
-      console.log(cat_Name);
-      const cat_products = products.filter((el) => el.category == cat_Name);
-      console.log(cat_products);
+      const cat_products = products.filter((el) => el.category === cat_Name);
       return cat_products.length > 0 ? cat_products : [];
     }
   
@@ -40,9 +38,9 @@ function FeaturesSectionFruits() {
                 </p>
             </div>
             <div className="space-x-4 mt-8 lg:mt-0">
-                <button className={`text-primery hover:text-secondry ${activeCategory === 'Fruits' ? 'text-gray-400' : ''}`}  onClick={() => FilterCategory('Fruits')}>Fruits</button>
-                <button className={`text-primery hover:text-secondry ${activeCategory === 'Vegetables' ? 'text-gray-400' : ''}`}  onClick={() => FilterCategory('Vegetables')} >Vegetables</button>
-                <button className={`text-primery hover:text-secondry ${activeCategory === 'Bread & Bakery' ? 'text-gray-400' : ''}`}  onClick={() => FilterCategory('Bread & Bakery')}>Bread & Bakery </button>
+                <button className={`text-primery hover:text-secondry ${activeCategory ==='Fruits' ? 'text-gray-500' : ''}`}  onClick={() => FilterCategory('Fruits')}>Fruits</button>
+                <button className={`text-primery hover:text-secondry ${activeCategory === 'Vegetables' ? 'text-gray-500' : ''}`}  onClick={() => FilterCategory('Vegetables')} >Vegetables</button>
+                <button className={`text-primery hover:text-secondry ${activeCategory === 'Bread & Bakery' ? 'text-gray-500' : ''}`}  onClick={() => FilterCategory('Bread & Bakery')}>Bread & Bakery </button>
             </div>
         </div>
         <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 pt-8 gap-2'>

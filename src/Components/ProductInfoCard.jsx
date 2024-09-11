@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { addToCart } from '../Store/Slices/CartSlice';
 import {addItem} from "../Store/Slices/CartSlice"
 import { useDispatch } from 'react-redux';
-function ProductInfoCard({img,name,price,product_Id}) {
+function ProductInfoCard({img,name,price,product_Id,desc,cat}) {
   const dispatch = useDispatch(); 
   const additem = (e) =>{
     e.preventDefault();
@@ -31,13 +31,12 @@ function ProductInfoCard({img,name,price,product_Id}) {
         <img src={img} alt="Name" className="aspect-ratio: 1 / 1 w-full" />
       </div>
       <div className="lg:p-16 sm:p-2 text-left ">
+        
       <h3 className="text-primery text-6xl font-semibold">${price}</h3>
-        <h2 className="text-primery text-xl font-bold pt-6">{name}</h2>
+      <h3 className="text-gray-400 text-xs font-semibold pt-6" >Category: <span  className="text-primery">{cat}</span></h3>
+        <h2 className="text-primery text-xl font-bold ">{name}</h2>
         <p className=":pt-8">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita
-          dolor animi suscipit quaerat unde dolorum quasi totam, inventore
-          obcaecati saepe, commodi, eaque id fugit temporibus iure in nam
-          dignissimos itaque.
+          {desc}
         </p>
         <div className="flex mt-4 ">
           <h3 className="text-xl font-medium pr-2 text-center justify-center ">Quantity:</h3>
@@ -51,7 +50,7 @@ function ProductInfoCard({img,name,price,product_Id}) {
             className="border rounded-md p-1 w-16 text-center"
           />
           </div>
-          
+        
           <div className="flex  justify-center">
           <button onClick={additem} className="flex bg-primery hover:bg-secondry lg:p-3 p-4 mt-10 text-lg lg:text-sm font-semibold text-white rounded-3xl">Add To Cart</button>
           </div>
