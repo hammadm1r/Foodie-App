@@ -6,10 +6,10 @@ import { userProfile } from "../Store/Slices/userProfileSlice";
 import { verify } from "../utils/verify";
 import { KEY_ACCESS_TOKEN } from '../utils/localStorageManager';
 import Swal from 'sweetalert2';
+import { axiosClient } from '../utils/axios';
 function ProfilePage() {
   const dispatch = useDispatch();
   const Profile = useSelector((state) => state.profileReducer.profile);
-
   const handleLogout =(e)=>{
     e.preventDefault();
     Swal.fire({
@@ -36,7 +36,7 @@ function ProfilePage() {
     <div className='container mt-16'>
        <div className="grid lg:grid-cols-2 gap-16 p-6 w-full md:grid-cols-2 sm:grid-cols-1 ">
         <div className=" w-fit justify-center items-center place-content: space-around ">
-        <img src={profileImg} alt="profile picture" className='rounded-full lg:ml-16'/>
+        <img src={`${axiosClient.defaults.baseURL}${Profile?.image}`} alt="profile picture" className='rounded-full lg:ml-16'/>
         </div>
         <div className='w-full'>
             <div className=''>
