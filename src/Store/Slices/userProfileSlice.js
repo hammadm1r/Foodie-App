@@ -15,7 +15,7 @@ const profile = createSlice({
     initialState :{
         isLoading:false,
         error:null,
-        profile:[]
+        profile:{}
     },
     extraReducers: (builder) =>{
         builder.addCase(userProfile.fulfilled,(state,action) =>{
